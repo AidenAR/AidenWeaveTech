@@ -40,6 +40,7 @@ cabal run tetris
 | **↑** | Rotate clockwise |
 | **Z** | Rotate counter-clockwise |
 | **Space** | Hard drop (+2 points per cell) |
+| **Esc** / **Q** | Quit game |
 | **R** | Restart (after game over) |
 
 ## Gameplay

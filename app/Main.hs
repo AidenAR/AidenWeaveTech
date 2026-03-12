@@ -3,6 +3,7 @@ module Main where
 import Graphics.Gloss
 import Graphics.Gloss.Interface.IO.Game
 import System.Random (randomRIO)
+import System.Exit (exitSuccess)
 
 -- ============================================================
 -- Types
@@ -275,6 +276,9 @@ handleInput (EventKey (SpecialKey KeySpace) Down _ _) gs
           dist = fst (pieceOrigin (gsCurrent gs)) - fst (pieceOrigin dropped)
       gs' <- lockAndSpawn gs { gsCurrent = dropped, gsScore = gsScore gs + dist * 2 }
       return gs' { gsDropTrail = 1.0 }
+handleInput (EventKey (SpecialKey KeyEsc) Down _ _) _ = exitSuccess
+handleInput (EventKey (Char 'q') Down _ _) _ = exitSuccess
+handleInput (EventKey (Char 'Q') Down _ _) _ = exitSuccess
 handleInput (EventKey (Char 'r') Down _ _) _ = initGame
 handleInput (EventKey (Char 'z') Down _ _) gs
   | gsGameOver gs = return gs
